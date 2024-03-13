@@ -1,0 +1,111 @@
+name: 'Saplings - Domain'
+description: 'Base Domain Access configuration for modern Drupal.'
+type: 'Site'
+install:
+  # Contrib.
+  - country_path
+  - domain
+  - domain_access
+  - domain_access_logo
+  - domain_alias
+  - domain_config
+  - domain_config_ui
+  - domain_content
+  - domain_entity
+  - domain_login_restrict
+  - domain_menus
+  - domain_microsite
+  - domain_path
+config:
+  import:
+    # Core.
+    field_ui: '*'
+    menu_ui: '*'
+    shortcut: '*'
+    taxonomy:
+      - core.entity_view_mode.taxonomy_term.full
+      - system.action.taxonomy_term_publish_action
+      - system.action.taxonomy_term_unpublish_action
+      - taxonomy.settings
+    views: '*'
+    views_ui: '*'
+    # Contrib.
+    domain: '*'
+    domain_access: '*'
+    domain_alias: '*'
+    domain_entity: '*'
+    domain_path: '*'
+    domain_config_ui: '*'
+    redirect:
+      - redirect.settings
+      - system.action.redirect_delete_action
+      - views.view.redirect
+  actions:
+    # Core.
+    # Sets Cron interval to 0.
+    automated_cron.settings:
+      simple_config_update:
+        interval: 0
+    # Users should not be able to set their own time zone.
+    system.date:
+      simple_config_update:
+        timezone.default: America/New_York
+        user.configurable: false
+    # Turn on error reporting.
+    system.logging:
+      simple_config_update:
+        error_level: some
+    # Performance.
+    system.performance:
+      simple_config_update:
+        cache.page.max_age: 300
+        css.preprocess: true
+        js.preprocess: true
+    # Set home page.
+    system.site:
+      simple_config_update:
+        page.front: /node/1
+    # Only Admins can register accounts.
+    user.settings:
+      simple_config_update:
+        register: admin_only
+    # Contrib.
+    # Customize Menu item and link attributes.
+    menu_link_attributes.config:
+      simple_config_update:
+        attributes.container_class:
+          label: 'Menu item class'
+          description: 'Add a CSS class to the menu item (li)'
+        attributes.container_id:
+          label: 'Menu item ID'
+          description: 'Add a unique ID to the menu item.'
+        attributes.class:
+          label: 'Menu link class'
+          description: 'Add a CSS class to the menu link (a)'
+        attributes.id:
+          label: 'Menu link ID'
+          description: 'Add a unique ID to the menu link.'
+        attributes.target:
+          label: 'Menu link target'
+          description: 'Set the link to open in the same window or a new one.'
+    # HTML Sitemap
+    sitemap.settings:
+      simple_config_update:
+        page_title: Sitemap foo
+        plugins.frontpage:
+          enabled: true
+          weight: 0
+          settings:
+            title: ''
+            rss: ''
+          id: frontpage
+          provider: sitemap
+        plugins.menu:main:
+          enabled: true
+          weight: 0
+          settings:
+            title: ''
+            show_disabled: false
+          id: 'menu:main'
+          provider: sitemap
+        include_css: true

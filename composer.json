@@ -1,0 +1,30 @@
+{
+  "name": "kanopi/saplings-domain",
+  "description": "Base Domain Access configuration for modern Drupal.",
+  "type": "drupal-recipe",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Anne Bonham",
+      "homepage": "https://kanopi.com",
+      "role": "Contributor"
+    }
+  ],
+  "require": {
+    "drupal/country_path": "^1.6",
+    "drupal/domain": "2.0.x-dev",
+    "drupal/domain_access_logo": "^2.0",
+    "drupal/domain_entity": "^1.0@RC",
+    "drupal/domain_login_restrict": "^1.2",
+    "drupal/domain_menu_links": "^1.2",
+    "drupal/domain_menus": "3.x-dev",
+    "drupal/domain_microsite": "^2.0@beta",
+    "drupal/domain_path": "^1.3"
+  },
+  "suggest": {
+    "kanopi/gin-admin-experience": "A simple Drupal Recipe for installing and configuring the Gin admin theme and supporting base modules.",
+    "kanopi/saplings-media": "Configures media defaults for modern Drupal.",
+    "kanopi/saplings-editorial": "Configures a rich editing experience for modern Drupal.",
+    "kanopi/saplings-launch": "Configures best practices for launching modern Drupal."
+  }
+}
