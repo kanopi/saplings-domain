@@ -2,14 +2,22 @@
 
 ## Overview
 
-This recipe installs base Domain Access module and configuration.
+This recipe installs base Domain Access modules.
 
 ## Features
 
-- Commonly used Domain modules
-- An example default domain - adjust this config for your project
-- An example microsite domain (example_microsite) and its domain aliases
-- An example top-level-domain (example_toplevel) and its domain aliases
+- Requires and enables commonly used Domain modules:
+    - domain
+    - domain_access
+    - domain_access_logo
+    - domain_alias
+    - domain_config
+    - domain_config_ui
+    - domain_content
+    - domain_entity
+    - domain_login_restrict
+    - domain_menus
+    - domain_path
 
 ## Getting Started
 
@@ -45,7 +53,7 @@ Once you have applied and unpacked this recipe, add the following patches to you
 
 ## Notes
 
-This recipe does not install the `domain_language` module. 
+This recipe does not install the [Domain Language](https://www.drupal.org/project/domain_language) module. 
 
 If your project is enabling Drupal translation, you should require it and enable it manually and add the following patch to your project's composer.json:
 
@@ -59,16 +67,16 @@ Without this patch, you won't be able to configure different language preference
 
 ## Configuration
 1. Go to admin/config/domain
-2. Edit the default domain and change the config to reflect the URL for your project
+2. Create your default domain and any additional domains you need
 3. Go back to admin/config/domain
 4. Select Aliases from the option list for your default domain
-5. Edit the aliases to reflect the URL of your docksal and pantheon sites
+5. Create local, testing (multidev), dev, and staging (test) aliases for each domain
 6. Go to /admin/config/domain/entities/node and enable domain access for each of your project's content types
-7. Go to /admin/config/domain/settings - if you want to Enable Login restriction, enable it at the bottom of this form and also enable Assign Domain to User
 8. Go to /admin/config/domain/menu/access/settings - if you want separate menus per domain, and you want them to be auto-configured when you add future domains enable them here. You can also just assign menus to certain domains, so this is optional.
 9. Go to /admin/config/domain/domain_menus - set options here as needed for your project
 10. Later, after all this config is deployed to your canonical site, go to /admin/config/domain/domain_access_logo if you want different logos per domain (because you have to upload files for this, you should do this config on your canonical site and then synch the database down to your local so you can export the config there)
 11. Go to /admin/config/domain/entities - we have pre-enabled common entity types like users, nodes and terms, but you may want to enable it for entities for your project, e.g, Sitewide Alerts
+12. Set Domain module permissions for your site's roles/needs
 
 ## Resources
 

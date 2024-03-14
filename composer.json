@@ -18,7 +18,6 @@
     "drupal/domain_login_restrict": "^1.2",
     "drupal/domain_menu_links": "^1.2",
     "drupal/domain_menus": "3.x-dev",
-    "drupal/domain_microsite": "^2.0@beta",
     "drupal/domain_path": "^1.3"
   },
   "suggest": {
